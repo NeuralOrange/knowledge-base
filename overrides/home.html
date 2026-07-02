@@ -1,8 +1,12 @@
 {#
   Knowledge Base — Home Page Template
 
-  Extends main.html to provide a custom landing page with 7 sections.
-  Content for each section comes from the front matter of docs/index.md.
+  Custom landing page with Bootstrap-enhanced layout:
+  1. Hero — 一句话介绍
+  2. Currently Learning + Recent Updates (双栏)
+  3. Recommended Reading
+  4. Knowledge Map + Projects (双栏)
+  5. Timeline
 #}
 
 {% extends "main.html" %}
@@ -22,74 +26,115 @@
     }
   </style>
 
+  <!-- Bootstrap Hero -->
   <section class="kb-home-hero">
-    <div class="md-grid md-typeset">
-      <div class="kb-home-hero__content">
-        <h1>Knowledge Base</h1>
-        {% if page.meta.tagline %}
-        <p class="kb-home-tagline">{{ page.meta.tagline }}</p>
-        {% endif %}
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-3 fw-bold text-white mb-3">Knowledge Base</h1>
+          {% if page.meta.tagline %}
+          <p class="lead text-white text-opacity-75 mb-0">
+            {{ page.meta.tagline }}
+          </p>
+          {% endif %}
+        </div>
       </div>
     </div>
   </section>
 {% endblock %}
 
-<!-- Home page content sections -->
+<!-- Home page content with Bootstrap grid -->
 {% block content %}
-  <div class="kb-home-content md-grid md-typeset">
+  <div class="container py-4">
 
-    {% if page.meta.currently_learning %}
-    <section class="kb-home-section">
-      <h2>🎓 Currently Learning</h2>
-      <div class="kb-home-section__body">
-        {{ page.meta.currently_learning | markdown }}
+    <!-- Row 1: Currently Learning + Recent Updates -->
+    <div class="row g-4 mb-4">
+      {% if page.meta.currently_learning %}
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-transparent border-primary border-2 border-bottom">
+            <h2 class="h5 mb-0">🎓 当前学习</h2>
+          </div>
+          <div class="card-body">
+            {{ page.meta.currently_learning | markdown }}
+          </div>
+        </div>
       </div>
-    </section>
-    {% endif %}
+      {% endif %}
 
-    {% if page.meta.recent_updates %}
-    <section class="kb-home-section">
-      <h2>🔄 Recent Updates</h2>
-      <div class="kb-home-section__body">
-        {{ page.meta.recent_updates | markdown }}
+      {% if page.meta.recent_updates %}
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-transparent border-success border-2 border-bottom">
+            <h2 class="h5 mb-0">🔄 最近更新</h2>
+          </div>
+          <div class="card-body">
+            {{ page.meta.recent_updates | markdown }}
+          </div>
+        </div>
       </div>
-    </section>
-    {% endif %}
+      {% endif %}
+    </div>
 
+    <!-- Row 2: Recommended Reading (full width) -->
     {% if page.meta.recommended_reading %}
-    <section class="kb-home-section">
-      <h2>📚 Recommended Reading</h2>
-      <div class="kb-home-section__body">
-        {{ page.meta.recommended_reading | markdown }}
+    <div class="row g-4 mb-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-transparent border-warning border-2 border-bottom">
+            <h2 class="h5 mb-0">📚 推荐阅读</h2>
+          </div>
+          <div class="card-body">
+            {{ page.meta.recommended_reading | markdown }}
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
     {% endif %}
 
-    {% if page.meta.knowledge_map %}
-    <section class="kb-home-section">
-      <h2>🗺️ Knowledge Map</h2>
-      <div class="kb-home-section__body">
-        {{ page.meta.knowledge_map | markdown }}
+    <!-- Row 3: Knowledge Map + Projects (双栏) -->
+    <div class="row g-4 mb-4">
+      {% if page.meta.knowledge_map %}
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-transparent border-info border-2 border-bottom">
+            <h2 class="h5 mb-0">🗺️ 知识地图</h2>
+          </div>
+          <div class="card-body">
+            {{ page.meta.knowledge_map | markdown }}
+          </div>
+        </div>
       </div>
-    </section>
-    {% endif %}
+      {% endif %}
 
-    {% if page.meta.projects_overview %}
-    <section class="kb-home-section">
-      <h2>🚀 Projects</h2>
-      <div class="kb-home-section__body">
-        {{ page.meta.projects_overview | markdown }}
+      {% if page.meta.projects_overview %}
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-header bg-transparent border-danger border-2 border-bottom">
+            <h2 class="h5 mb-0">🚀 项目</h2>
+          </div>
+          <div class="card-body">
+            {{ page.meta.projects_overview | markdown }}
+          </div>
+        </div>
       </div>
-    </section>
-    {% endif %}
+      {% endif %}
+    </div>
 
+    <!-- Row 4: Timeline (full width) -->
     {% if page.meta.timeline %}
-    <section class="kb-home-section">
-      <h2>⏳ Timeline</h2>
-      <div class="kb-home-section__body">
-        {{ page.meta.timeline | markdown }}
+    <div class="row g-4 mb-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header bg-transparent border-secondary border-2 border-bottom">
+            <h2 class="h5 mb-0">⏳ 时间线</h2>
+          </div>
+          <div class="card-body">
+            {{ page.meta.timeline | markdown }}
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
     {% endif %}
 
   </div>
