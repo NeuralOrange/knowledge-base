@@ -1,0 +1,98 @@
+{#
+  Knowledge Base — Home Page Template
+
+  Extends main.html to provide a custom landing page with 7 sections.
+  Content for each section comes from the front matter of docs/index.md.
+#}
+
+{% extends "main.html" %}
+
+<!-- Hero section under the tabs -->
+{% block tabs %}
+  {{ super() }}
+
+  <style>
+    .md-header { position: initial; }
+    .md-main__inner { margin: 0; }
+    @media screen and (min-width: 60em) {
+      .md-sidebar--secondary { display: none; }
+    }
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary { display: none; }
+    }
+  </style>
+
+  <section class="kb-home-hero">
+    <div class="md-grid md-typeset">
+      <div class="kb-home-hero__content">
+        <h1>Knowledge Base</h1>
+        {% if page.meta.tagline %}
+        <p class="kb-home-tagline">{{ page.meta.tagline }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+<!-- Home page content sections -->
+{% block content %}
+  <div class="kb-home-content md-grid md-typeset">
+
+    {% if page.meta.currently_learning %}
+    <section class="kb-home-section">
+      <h2>🎓 Currently Learning</h2>
+      <div class="kb-home-section__body">
+        {{ page.meta.currently_learning | markdown }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.meta.recent_updates %}
+    <section class="kb-home-section">
+      <h2>🔄 Recent Updates</h2>
+      <div class="kb-home-section__body">
+        {{ page.meta.recent_updates | markdown }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.meta.recommended_reading %}
+    <section class="kb-home-section">
+      <h2>📚 Recommended Reading</h2>
+      <div class="kb-home-section__body">
+        {{ page.meta.recommended_reading | markdown }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.meta.knowledge_map %}
+    <section class="kb-home-section">
+      <h2>🗺️ Knowledge Map</h2>
+      <div class="kb-home-section__body">
+        {{ page.meta.knowledge_map | markdown }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.meta.projects_overview %}
+    <section class="kb-home-section">
+      <h2>🚀 Projects</h2>
+      <div class="kb-home-section__body">
+        {{ page.meta.projects_overview | markdown }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if page.meta.timeline %}
+    <section class="kb-home-section">
+      <h2>⏳ Timeline</h2>
+      <div class="kb-home-section__body">
+        {{ page.meta.timeline | markdown }}
+      </div>
+    </section>
+    {% endif %}
+
+  </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -1,0 +1,267 @@
+# Knowledge Base — Material for MkDocs Configuration
+# A public digital garden: thoughts, projects, and learning organized as a knowledge graph.
+
+# -----------------------------------------------------------------------------
+# Site Information
+# -----------------------------------------------------------------------------
+site_name: Knowledge Base
+site_url: https://nuronalorange.github.io/knowledge-base/
+site_author: NeuralOrange
+site_description: >-
+  A public knowledge base — thoughts, projects, and learning organized
+  as a digital garden. Not a blog, but a public Obsidian vault.
+
+# -----------------------------------------------------------------------------
+# Repository
+# -----------------------------------------------------------------------------
+repo_name: nuronalorange/knowledge-base
+repo_url: https://github.com/nuronalorange/knowledge-base
+
+# -----------------------------------------------------------------------------
+# Copyright
+# -----------------------------------------------------------------------------
+copyright: Copyright &copy; 2026 NeuralOrange
+
+# -----------------------------------------------------------------------------
+# Theme Configuration
+# -----------------------------------------------------------------------------
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+  features:
+    # Navigation
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.path
+    - navigation.footer
+    - navigation.top
+    - navigation.tracking
+    # Search
+    - search.highlight
+    - search.suggest
+    - search.share
+    # Content
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+    # Table of Contents
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: material/library
+
+# -----------------------------------------------------------------------------
+# Plugins
+# -----------------------------------------------------------------------------
+plugins:
+  # Blog plugin for "Thinking" section
+  - blog:
+      blog_dir: thinking
+      post_dir: thinking/posts
+      post_url_format: "{slug}"
+      archive: false
+      categories: true
+      authors: false
+      pagination: true
+      pagination_per_page: 10
+
+  # Tags plugin with hierarchy for three-dimensional tagging
+  - tags:
+      tags_name_property: tags
+      tags_name_variable: tags
+      tags_hierarchy: true
+      tags_hierarchy_separator: "/"
+
+  # Search with Chinese language support
+  - search:
+      lang: zh
+      separator: '[\s​\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+# -----------------------------------------------------------------------------
+# Hooks
+# -----------------------------------------------------------------------------
+hooks:
+  - overrides/hooks/wikilinks.py
+  - overrides/hooks/shortcodes.py
+
+# -----------------------------------------------------------------------------
+# Markdown Extensions
+# -----------------------------------------------------------------------------
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# -----------------------------------------------------------------------------
+# Extra Configuration
+# -----------------------------------------------------------------------------
+extra_css:
+  - assets/stylesheets/custom.css
+
+extra_javascript:
+  - assets/javascripts/custom.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nuronalorange
+
+  # Tag icons and colors for the three-dimensional tag system
+  tags:
+    Level/Beginner: beginner
+    Level/Intermediate: intermediate
+    Level/Advanced: advanced
+    Level/Expert: expert
+    Type/Concept: concept
+    Type/Pattern: pattern
+    Type/Architecture: architecture
+    Type/Tool: tool
+    Type/Case Study: case-study
+    Type/Project: project
+    Status/Draft: draft
+    Status/Learning: learning
+    Status/Reviewed: reviewed
+    Status/Completed: completed
+
+# -----------------------------------------------------------------------------
+# Exclude blog posts from main navigation
+# -----------------------------------------------------------------------------
+not_in_nav: |
+  thinking/posts/*
+  _snippets/*
+  projects/college-advisor/*
+  projects/math-learning/*
+  projects/knowledge-base/*
+  roadmap/adr/*
+  roadmap/book-notes/*
+  roadmap/case-study/*
+  roadmap/prompt-library/*
+  roadmap/weekly/*
+
+# -----------------------------------------------------------------------------
+# Navigation (Page Tree)
+# -----------------------------------------------------------------------------
+nav:
+  - Home: index.md
+
+  - Knowledge:
+    - knowledge/index.md
+    - Computer Science:
+      - knowledge/computer-science/index.md
+      - Algorithm: knowledge/computer-science/algorithm.md
+      - Data Structure: knowledge/computer-science/data-structure.md
+      - Operating System: knowledge/computer-science/os.md
+      - Network: knowledge/computer-science/network.md
+      - Database: knowledge/computer-science/database.md
+    - Software Engineering:
+      - knowledge/software-engineering/index.md
+      - OOP: knowledge/software-engineering/oop.md
+      - SOLID: knowledge/software-engineering/solid.md
+      - Design Pattern: knowledge/software-engineering/design-pattern.md
+      - Refactoring: knowledge/software-engineering/refactoring.md
+    - Software Architecture:
+      - knowledge/software-architecture/index.md
+      - Layered Architecture: knowledge/software-architecture/layered.md
+      - Clean Architecture: knowledge/software-architecture/clean.md
+      - Hexagonal Architecture: knowledge/software-architecture/hexagonal.md
+      - Domain-Driven Design: knowledge/software-architecture/ddd.md
+      - Event-Driven Architecture: knowledge/software-architecture/event-driven.md
+    - System Design:
+      - knowledge/system-design/index.md
+      - Cache: knowledge/system-design/cache.md
+      - Message Queue: knowledge/system-design/mq.md
+      - API Design: knowledge/system-design/api.md
+      - Authentication: knowledge/system-design/authentication.md
+      - Load Balance: knowledge/system-design/load-balance.md
+    - AI Engineering:
+      - knowledge/ai-engineering/index.md
+      - Prompt Engineering: knowledge/ai-engineering/prompt.md
+      - AI Agent: knowledge/ai-engineering/agent.md
+      - MCP Protocol: knowledge/ai-engineering/mcp.md
+      - RAG: knowledge/ai-engineering/rag.md
+      - AI Workflow: knowledge/ai-engineering/workflow.md
+    - Cloud:
+      - knowledge/cloud/index.md
+      - Docker: knowledge/cloud/docker.md
+      - Linux: knowledge/cloud/linux.md
+      - Kubernetes: knowledge/cloud/kubernetes.md
+    - Productivity: knowledge/productivity.md
+
+  - Projects:
+    - projects/index.md
+
+  - Thinking:
+    - thinking/index.md
+
+  - Learning Roadmap:
+    - roadmap/index.md
+    - Weekly Logs: roadmap/weekly/index.md
+    - Book Notes: roadmap/book-notes/index.md
+    - Case Study: roadmap/case-study/index.md
+    - Architecture Decisions: roadmap/adr/index.md
+    - Prompt Library: roadmap/prompt-library/index.md
+
+  - About:
+    - about/index.md

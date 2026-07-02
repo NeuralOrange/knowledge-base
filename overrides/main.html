@@ -1,0 +1,35 @@
+{#
+  Knowledge Base — Main Template Override
+
+  Extends the Material theme's base.html to add:
+  1. Wikilinks backlinks section at the bottom of each page
+  2. Digital garden status indicators
+
+  Custom CSS/JS are loaded via extra_css/extra_javascript in mkdocs.yml.
+  The backlinks section only appears when wikilinks_backlinks is populated
+  by the wikilinks hook (overrides/hooks/wikilinks.py).
+#}
+
+{% extends "base.html" %}
+
+<!-- Content block with backlinks -->
+{% block content %}
+  {{ super() }}
+
+  {% if wikilinks_backlinks %}
+  <aside class="wikilinks-backlinks">
+    <hr>
+    <h2>Related Pages</h2>
+    <p class="wikilinks-backlinks__hint">
+      Pages that link here — follow the connections through the knowledge graph.
+    </p>
+    <ul>
+      {% for url, title in wikilinks_backlinks %}
+      <li>
+        <a href="{{ url | url }}">{{ title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+{% endblock %}

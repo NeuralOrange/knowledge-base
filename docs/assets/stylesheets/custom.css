@@ -1,0 +1,302 @@
+/*
+ * Knowledge Base — Custom Stylesheet
+ *
+ * Styles for:
+ * - Wikilinks backlinks section
+ * - Unresolved wikilink indication
+ * - Home page hero and sections
+ * - Digital garden badges (seedling, evergreen, status)
+ * - Update history timeline
+ * - Knowledge template guide
+ */
+
+/* =========================================================================
+   Wikilinks Backlinks Section
+   ========================================================================= */
+
+.wikilinks-backlinks {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--md-code-bg-color);
+}
+
+.wikilinks-backlinks h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--md-typeset-color);
+}
+
+.wikilinks-backlinks__hint {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 1rem;
+}
+
+.wikilinks-backlinks ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.wikilinks-backlinks li {
+  margin-bottom: 0.4rem;
+}
+
+.wikilinks-backlinks li::before {
+  content: "→ ";
+  color: var(--md-primary-fg-color);
+  font-weight: bold;
+}
+
+.wikilinks-backlinks a {
+  font-weight: 500;
+}
+
+/* =========================================================================
+   Unresolved Wikilinks
+   ========================================================================= */
+
+.wikilink-unresolved {
+  color: #e53935;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #e53935;
+  cursor: help;
+}
+
+/* =========================================================================
+   Home Page
+   ========================================================================= */
+
+.kb-home-hero {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--md-primary-fg-color) 0%,
+    var(--md-accent-fg-color) 100%
+  );
+  color: var(--md-primary-bg-color);
+}
+
+.kb-home-hero__content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--md-primary-bg-color);
+}
+
+.kb-home-tagline {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.kb-home-content {
+  padding: 2rem 1rem;
+}
+
+.kb-home-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.kb-home-section:hover {
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.kb-home-section h2 {
+  margin-top: 0;
+  font-size: 1.35rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--md-primary-fg-color);
+}
+
+.kb-home-section__body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.kb-home-section__body ul {
+  padding-left: 1.25rem;
+}
+
+.kb-home-section__body li {
+  margin-bottom: 0.35rem;
+}
+
+/* =========================================================================
+   Digital Garden Badges
+   ========================================================================= */
+
+.kb-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.6em;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Growth stage badges */
+.kb-badge--growth {
+  border: 1px solid;
+}
+
+.kb-badge--seedling {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.kb-badge--evergreen {
+  background: #e8eaf6;
+  color: #283593;
+  border-color: #9fa8da;
+}
+
+/* Status badges */
+.kb-badge--status {
+  font-weight: 500;
+}
+
+.kb-badge--draft {
+  background: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffcc80;
+}
+
+.kb-badge--learning {
+  background: #e3f2fd;
+  color: #01579b;
+  border: 1px solid #90caf9;
+}
+
+.kb-badge--reviewed {
+  background: #f3e5f5;
+  color: #6a1b9a;
+  border: 1px solid #ce93d8;
+}
+
+.kb-badge--completed {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
+/* =========================================================================
+   Update History Timeline
+   ========================================================================= */
+
+.kb-updates {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  border-left: 3px solid var(--md-primary-fg-color);
+  background: var(--md-code-bg-color);
+}
+
+.kb-updates h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.kb-updates__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kb-updates__item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+}
+
+.kb-updates__date {
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+  min-width: 6rem;
+  font-family: var(--md-code-font-family);
+}
+
+.kb-updates__note {
+  color: var(--md-typeset-color);
+}
+
+/* =========================================================================
+   Knowledge Template Guide (collapsible)
+   ========================================================================= */
+
+.kb-template-guide {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px dashed var(--md-default-fg-color--lighter);
+  border-radius: 0.5rem;
+  background: var(--md-code-bg-color);
+}
+
+.kb-template-guide summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--md-typeset-color);
+}
+
+.kb-template-guide__body {
+  margin-top: 0.75rem;
+}
+
+.kb-template-guide__body ol {
+  padding-left: 1.25rem;
+}
+
+.kb-template-guide__body li {
+  margin-bottom: 0.5rem;
+}
+
+.kb-template-guide__body small {
+  color: var(--md-default-fg-color--light);
+}
+
+/* =========================================================================
+   Dark Mode Adjustments
+   ========================================================================= */
+
+[data-md-color-scheme="slate"] .kb-home-section {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-md-color-scheme="slate"] .kb-home-section:hover {
+  border-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .kb-badge--seedling {
+  background: rgba(46, 125, 50, 0.2);
+  color: #81c784;
+  border-color: rgba(129, 199, 132, 0.3);
+}
+
+[data-md-color-scheme="slate"] .kb-badge--evergreen {
+  background: rgba(40, 53, 147, 0.2);
+  color: #9fa8da;
+  border-color: rgba(159, 168, 218, 0.3);
+}
+
+[data-md-color-scheme="slate"] .kb-updates {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-md-color-scheme="slate"] .kb-template-guide {
+  background: rgba(255, 255, 255, 0.03);
+}
