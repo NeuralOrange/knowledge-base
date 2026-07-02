@@ -60,7 +60,7 @@ Material for MkDocs
 
 ```bash
 # 克隆仓库
-git clone https://github.com/nuronalorange/knowledge-base.git
+git clone https://github.com/neuralorange/knowledge-base.git
 cd knowledge-base
 
 # 安装依赖
@@ -147,7 +147,7 @@ updates:                 # 可选：更新记录
 git push → GitHub Actions → mkdocs build → GitHub Pages
 ```
 
-站点地址：`https://nuronalorange.github.io/knowledge-base/`
+站点地址：`https://neuralorange.github.io/knowledge-base/`
 
 ## 项目结构
 

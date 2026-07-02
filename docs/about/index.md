@@ -37,4 +37,4 @@ material.
 
 ## Connect
 
-- :fontawesome-brands-github: [GitHub](https://github.com/nuronalorange)
+- :fontawesome-brands-github: [GitHub](https://github.com/neuralorange)
